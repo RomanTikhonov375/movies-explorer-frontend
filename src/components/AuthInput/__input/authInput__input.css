@@ -1,0 +1,17 @@
+.authInput__input {
+    border-radius: 8px;
+    background: #2F2F2F;
+    border: 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.authInput__input:focus-visible {
+    outline: 0;
+}

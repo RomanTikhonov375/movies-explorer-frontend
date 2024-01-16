@@ -1,0 +1,9 @@
+.login__authForm {
+    gap: 159px;
+}
+
+@media screen and (max-width: 450px) {
+    .login__authForm {
+        gap: 267px;
+    }
+}

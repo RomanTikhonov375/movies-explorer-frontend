@@ -1,0 +1,9 @@
+.aboutProject__caption_size_l {
+    width: 80%;
+}
+
+@media screen and (max-width: 563px) {
+    .aboutProject__caption_size_l {
+        width: 65%;
+    }
+}

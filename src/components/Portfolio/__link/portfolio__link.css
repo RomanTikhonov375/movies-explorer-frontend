@@ -1,0 +1,30 @@
+.portfolio__link {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: -1.2px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #424242;
+    width: 100%;
+}
+
+@media screen and (max-width:770px) {
+    .portfolio__link {
+        font-size: 28px;
+        letter-spacing: -1.12px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.72px;
+    }
+}

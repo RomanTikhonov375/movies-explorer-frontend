@@ -1,0 +1,24 @@
+.navTab__navigation-item {
+    cursor: pointer;
+    padding: 10px 17px;
+    border-radius: 10px;
+    background: #303030;
+    box-sizing: border-box;
+}
+
+.navTab__navigation-item:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width:780px) {
+    .navTab__navigation-item {
+        padding: 10px 17px;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .navTab__navigation-item {
+        font-size: 10px;
+        padding: 5px 15px;
+    }
+}

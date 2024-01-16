@@ -1,0 +1,9 @@
+.aboutProject__grid-wrapper {
+    grid-column: 1 / 3;
+}
+
+@media screen and (max-width: 563px) {
+    .aboutProject__grid-wrapper {
+        grid-column: 1 / -1;
+    }
+}

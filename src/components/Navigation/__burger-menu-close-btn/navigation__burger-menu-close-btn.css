@@ -1,0 +1,12 @@
+.navigation__burger-menu-close-btn {
+    background-image: url(../../../images/slider-close-btn.svg);
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0;
+    align-self: flex-end;
+}

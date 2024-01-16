@@ -1,0 +1,28 @@
+.aboutMe__career {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 18px 0 26px 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .aboutMe__career {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 20px 0;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .aboutMe__career {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 20px;
+
+    }
+}

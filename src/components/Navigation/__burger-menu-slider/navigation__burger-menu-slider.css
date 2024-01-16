@@ -1,0 +1,17 @@
+.navigation__burger-menu-slider {
+    position: fixed;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 520px;
+    background-color: inherit;
+    overflow-y: auto;
+    padding: 23px;
+    /* right: -100%; */
+    -webkit-transition: 0.8s;
+    -moz-transition: 0.8s;
+    -o-transition: 0.8s;
+    transition: 0.8s;
+}

@@ -1,0 +1,12 @@
+.moviesCard__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 780px) {
+    .moviesCard__wrapper {
+        padding: 0;
+    }
+}

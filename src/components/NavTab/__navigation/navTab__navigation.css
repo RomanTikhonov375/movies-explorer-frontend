@@ -1,0 +1,15 @@
+.navTab__navigation {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+}
+
+@media screen and (max-width:440px) {
+    .navTab__navigation {
+        gap: 6px;
+    }
+
+}

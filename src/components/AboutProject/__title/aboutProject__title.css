@@ -1,0 +1,23 @@
+.aboutProject__title {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    margin: 0;
+    padding-bottom: 26px;
+}
+
+@media screen and (max-width: 770px) {
+    .aboutProject__title {
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .aboutProject__title {
+        padding-bottom: 10px;
+    }
+}

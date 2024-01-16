@@ -1,0 +1,23 @@
+.promo {
+    display: flex;
+    flex-direction: column;
+    width: 93%;
+    border-radius: 10px;
+    background: #272727;
+    box-sizing: border-box;
+    align-items: center;
+    margin-top: 20px;
+}
+
+@media screen and (max-width:930px) {
+    .promo{
+        width: 96%;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .promo{
+        width: 91%;
+        margin-top: 15px;
+    }
+}
