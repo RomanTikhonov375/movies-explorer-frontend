@@ -3,15 +3,21 @@
     background: #2F2F2F;
     border: 0;
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     box-sizing: border-box;
     padding: 15px;
+    margin-top: 10px;
+}
+
+
+.authInput__input:focus-visible {
+    outline: 1px solid gray;
 }
 
 .authInput__input:focus-visible {
-    outline: 0;
+    outline: 1px solid lightgray;
 }

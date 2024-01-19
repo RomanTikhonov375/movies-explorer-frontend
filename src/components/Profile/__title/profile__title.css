@@ -10,6 +10,13 @@
     margin-bottom: 123px;
 }
 
+@media screen and (max-width:770px) {
+    .profile__title {
+        margin-top: 236px;
+        margin-bottom: 96px;
+    }
+}
+
 @media screen and (max-width:450px) {
     .profile__title {
         margin-top: 70px;

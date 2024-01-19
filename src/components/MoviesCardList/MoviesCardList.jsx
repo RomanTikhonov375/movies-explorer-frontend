@@ -8,7 +8,8 @@ function MoviesCardList() {
 
     return (
         <section className="moviesCardList">
-            <ul className="moviesCardList__wrapper">
+            <h2 className="moviesCardList__header">Список фильмов</h2>
+            <ul className="moviesCard">
                 <MoviesCard></MoviesCard>
             </ul>
            {location.pathname === '/movies' ? <button type='button' className="moviesCardList__more-button">Ещё</button> : null} 

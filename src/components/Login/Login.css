@@ -1,5 +1,5 @@
 .login {
-    width: 410px;
+    width: 396px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,6 +14,7 @@
 
 @media screen and (max-width: 450px) {
     .login {
+        align-items: center;
         margin-top: 56px;
         width: 260px;
     }

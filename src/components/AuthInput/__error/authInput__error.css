@@ -1,6 +1,7 @@
 .authInput__error {
+    display: none;
     color: #EE3465;
-    font-family: Inter;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;

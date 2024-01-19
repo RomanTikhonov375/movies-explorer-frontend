@@ -5,6 +5,7 @@
     border: 0;
     font-size: 0;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .searchForm__submit-button:hover {

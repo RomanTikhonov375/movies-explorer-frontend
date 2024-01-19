@@ -2,11 +2,18 @@
     text-decoration: none;
     color: white;
     text-align: right;
-    font-family: Inter;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
+}
+
+@media screen and (max-width:768px) {
+    .navigation__navigation-item {
+        font-size: 18px;
+        line-height: normal;
+    }
 }
 
 .navigation__navigation-item:hover {

@@ -5,10 +5,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 function SavedMovies() {
 
     return (
-        <section className='savedMovies'>
+        <main className='savedMovies'>
+            <h2 className="savedMovies__header">Список сохраненных фильмов</h2>
             <SearchForm></SearchForm>
             <MoviesCardList></MoviesCardList>
-        </section>
+        </main>
     );
 
 }

@@ -10,120 +10,66 @@ function MoviesCard() {
     return (
         <>
             <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
+                <img src={m2} alt="Кадр фильма" className='moviesCard__image' />
                 <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
+                    <h2 className="moviesCard__caption">33 слова о дизайне</h2>
                     <p className="moviesCard__duratation">1ч 17м</p>
                 </div>
                 {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
                     <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
+                }
             </li>
             <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
+                <img src={m2} alt="Кадр фильма" className='moviesCard__image' />
                 <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
+                    <h2 className="moviesCard__caption">33 слова о дизайне</h2>
                     <p className="moviesCard__duratation">1ч 17м</p>
                 </div>
                 {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
                     <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
+                }
             </li>
             <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
+                <img src={m2} alt="Кадр фильма" className='moviesCard__image' />
                 <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
+                    <h2 className="moviesCard__caption">33 слова о дизайне</h2>
                     <p className="moviesCard__duratation">1ч 17м</p>
                 </div>
                 {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
                     <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
+                }
             </li>
             <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
+                <img src={m2} alt="Кадр фильма" className='moviesCard__image' />
                 <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
+                    <h2 className="moviesCard__caption">33 слова о дизайне</h2>
                     <p className="moviesCard__duratation">1ч 17м</p>
                 </div>
                 {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
                     <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
+                }
             </li>
             <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
+                <img src={m2} alt="Кадр фильма" className='moviesCard__image' />
                 <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
+                    <h2 className="moviesCard__caption">33 слова о дизайне</h2>
                     <p className="moviesCard__duratation">1ч 17м</p>
                 </div>
                 {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
                     <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
+                }
             </li>
             <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
+                <img src={m2} alt="Кадр фильма" className='moviesCard__image' />
                 <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
+                    <h2 className="moviesCard__caption">33 слова о дизайне</h2>
                     <p className="moviesCard__duratation">1ч 17м</p>
                 </div>
                 {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
                     <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
+                }
             </li>
-            <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
-                <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
-                    <p className="moviesCard__duratation">1ч 17м</p>
-                </div>
-                {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
-                    <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
-            </li>            <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
-                <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
-                    <p className="moviesCard__duratation">1ч 17м</p>
-                </div>
-                {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
-                    <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
-            </li>            <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
-                <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
-                    <p className="moviesCard__duratation">1ч 17м</p>
-                </div>
-                {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
-                    <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
-            </li>            <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
-                <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
-                    <p className="moviesCard__duratation">1ч 17м</p>
-                </div>
-                {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
-                    <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
-            </li>            <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
-                <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
-                    <p className="moviesCard__duratation">1ч 17м</p>
-                </div>
-                {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
-                    <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
-            </li>            <li className="moviesCard__item">
-                <img src={m2} alt="" className='moviesCard__image' />
-                <div className="moviesCard__wrapper">
-                    <p className="moviesCard__caption">33 слова о дизайне</p>
-                    <p className="moviesCard__duratation">1ч 17м</p>
-                </div>
-                {location.pathname === '/movies' ? <button type='button' className={`moviesCard__save-button ${isSave ? 'moviesCard__already-save-button' : ''}`} onClick={() => setIsSave(!isSave)}>Сохранить</button> :
-                    <button type='button' className='moviesCard__delete-button' onClick={() => setIsSave(!isSave)}>Удалить из сохраненных</button>
-                    }
-            </li>
+            
 
         </>
     );

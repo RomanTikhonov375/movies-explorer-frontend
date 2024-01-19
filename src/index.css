@@ -1,28 +1,33 @@
 @import './vendor/normalize.css';
 @import './fonts/fonts.css';
+@import './components/Main/Main.css';
 
 @import './components/AboutProject/AboutProject.css';
 @import './components/Header/Header.css';
-@import './blocks/logo/logo.css';
+@import './components/Logo/Logo.css';
+@import './components/Navigation/Navigation.css';
 @import './components/Navigation/__btn-wrapper/navigation__btn-wrapper.css';
 @import './components/Navigation/__signin-button/navigation__signin-button.css';
 @import './components/Navigation/__signup-button/navigation__signup-button.css';
-@import './components/Navigation/__navigation/navigation__navigation.css';
 @import './components/Navigation/__navigation-item/navigation__navigation-item.css';
 @import './components/Navigation/__profile-button/navigation__profile-button.css';
-@import './components/Navigation/__burger-menu/navigation__burger-menu.css';
+@import './blocks/burger-menu/burger-menu.css';
 @import './components/Navigation/__burger-menu-slider/navigation__burger-menu-slider.css';
 @import './components/Navigation/__burger-menu-close-btn/navigation__burger-menu-close-btn.css';
 @import './components/Navigation/__burger-menu-nav/navigation__burger-menu-nav.css';
 @import './components/Navigation/__burger-menu-item/navigation__burger-menu-item.css';
 @import './components/Navigation/__navigation-wrapper/navigation__navigation-wrapper.css';
+@import './blocks/overlay/__display/overlay__display__block.css';
+@import './blocks/overlay/__display/overlay__display_none.css';
+@import './blocks/overlay/overlay.css';
+
 
 @import './components/Promo/Promo.css';
 @import './components/Promo/__title/promo__title.css';
-@import './components/NavTab/__navigation-wrapper/navTab__navigation-wrapper.css';
+@import './components/NavTab/NavTab.css';
 @import './components/NavTab/__navigation/navTab__navigation.css';
 @import './components/NavTab/__navigation-item/navTab__navigation-item.css';
-@import './components/NavTab/__navigation-link/navTav__navigation-link.css';
+@import './components/NavTab/__navigation-link/navTab__navigation-link.css';
 
 @import './components/AboutProject/AboutProject.css';
 @import './blocks/section-wrapper/section-wrapper.css';
@@ -68,8 +73,11 @@
 @import './components/Footer/__list/footer__list.css';
 @import './components/Footer/__link/footer__link.css';
 
+
+@import './components/Movies/Movies.css';
 @import './components/SearchForm/SearchForm.css';
 @import './components/SearchForm/__form/searchForm__form.css';
+@import './components/SearchForm/__header/searchForm__header.css';
 @import './components/SearchForm/__input-wrapper/searchForm__input-wrapper.css';
 @import './components/SearchForm/__input/searchForm__input.css';
 @import './components/SearchForm/__submit-button/searchForm__submit-button.css';
@@ -78,7 +86,8 @@
 @import './components/SearchForm/__radio-caption/searchForm__radio-caption.css';
 
 @import './components/MoviesCardList/MoviesCardList.css';
-@import './components/MoviesCardList/__wrapper/moviesCardList__wrapper.css';
+@import './components/MoviesCard/MoviesCard.css';
+@import './components/MoviesCardList/__header/moviesCardList__header.css';
 
 @import './components/MoviesCard/__item/moviesCard__item.css';
 @import './components/MoviesCard/__image/moviesCard__image.css';
@@ -92,6 +101,7 @@
 
 
 @import './components/SavedMovies/SavedMovies.css';
+@import './components/SavedMovies/__header/savedMovies__header.css';
 @import './components/Profile/Profile.css';
 @import './components/Profile/__title/profile__title.css';
 @import './components/Profile/__form/profile__form.css';
@@ -104,13 +114,14 @@
 @import './components/Profile/__edit-button/profile__edit-button.css';
 @import './components/Profile/__logout-button/profile__logout-button.css';
 @import './components/Profile/__error-text/profile__error-text.css';
+@import './components/Profile/__logout-link/profile__logout-link.css';
 
 @import './components/Register/Register.css';
 @import './components/Register/__title/register__title.css';
 @import './components/AuthForm/AuthForm.css';
 @import './components/AuthForm/__wrapper/authForm__wrapper.css';
-@import './components/AuthForm/_list/authForm_list.css';
-@import './components/AuthForm/__list-item/authForm__list-item.css';
+@import './components/AuthForm/__list/authForm__list.css';
+@import './components/AuthInput/AuthInput.css';
 @import './components/AuthInput/__caption/authInput__caption.css';
 @import './components/AuthInput/__input/authInput__input.css';
 @import './components/AuthInput/__error/authInput__error.css';
@@ -127,3 +138,4 @@
 @import './components/NotFound/__title/notFound__title.css';
 @import './components/NotFound/__caption/notFound__caption.css';
 @import './components/NotFound/__backward-button/notFound__backward-button.css';
+@import './components/AuthInput/__error/_active/authInput__error_active.css';

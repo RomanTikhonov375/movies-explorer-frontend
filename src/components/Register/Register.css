@@ -1,13 +1,21 @@
 .register {
-    width: 410px;
+    width: 397px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 70px;
 }
 
+@media screen and (max-width: 770px) {
+    .register {
+        margin-top: 232px;
+    }
+}
+
 @media screen and (max-width: 450px) {
     .register {
+        margin-top: 56px;
+        align-items: center;
         width: 260px;
     }
 }

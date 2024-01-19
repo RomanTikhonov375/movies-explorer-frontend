@@ -1,27 +1,37 @@
 import React, { useContext, useState } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import ButtonUserSubmit from '../ButtonUserSubmit/ButtonUserSubmit';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Profile({ setCurrentUser }) {
     const currentUser = useContext(CurrentUserContext);
     const [editUser, setEditUser] = useState('');
 
+    const navigate = useNavigate();
 
-    function handleSubmit(e) {
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         setEditUser(false);
         setCurrentUser({ ...currentUser });
     }
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        navigate('/' , {replace: true})
+    }
+
     return (
-        <section className='profile'>
+        <main className='profile'>
             <h1 className="profile__title">Привет, {currentUser.name}</h1>
             <form className="profile__form" onSubmit={handleSubmit}>
                 <fieldset className='profile__form-wrapper'>
                     <div className="profile__input-wrapper">
                         <label htmlFor="input-name" className="profile__caption">Имя</label>
                         <input
+                            minLength={2}
+                            maxLength={30}
                             type="text"
                             className="profile__input"
                             id='input-name'
@@ -59,12 +69,12 @@ function Profile({ setCurrentUser }) {
                             onClick={() => setEditUser(true)}>
                             Редактировать
                         </button>
-                        <button className="profile__logout-button">Выйти из аккаунта</button>
+                        <button className="profile__logout-button" onClick={handleLogout}>Выйти из аккаунта</button>
                     </div>}
             </form>
 
 
-        </section>
+        </main>
     );
 
 }
