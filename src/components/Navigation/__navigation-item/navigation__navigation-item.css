@@ -1,0 +1,32 @@
+.navigation__navigation-item {
+    text-decoration: none;
+    color: white;
+    text-align: right;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+@media screen and (max-width:768px) {
+    .navigation__navigation-item {
+        font-size: 18px;
+        line-height: normal;
+    }
+}
+
+.navigation__navigation-item:hover {
+    opacity: 0.7;
+}
+
+.navigation__navigation-item_active {
+    font-weight: 500;
+}
+
+@media screen and (max-width:768px) {
+    .navigation__navigation-item_active {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+    }
+}

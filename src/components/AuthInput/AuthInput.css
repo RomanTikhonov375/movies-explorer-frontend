@@ -1,0 +1,4 @@
+.authInput {
+        display: flex;
+        flex-direction: column;
+}

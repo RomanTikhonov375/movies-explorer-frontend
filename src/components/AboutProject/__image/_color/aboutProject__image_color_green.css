@@ -1,0 +1,11 @@
+.aboutProject__image_color_green {
+    color: #000;
+    width: 20%;
+    background: #3DDC84;
+}
+
+@media screen and (max-width: 563px) {
+    .aboutProject__image_color_green {
+        width: 35%;
+    }
+}

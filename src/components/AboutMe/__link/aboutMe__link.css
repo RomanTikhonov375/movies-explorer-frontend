@@ -1,0 +1,20 @@
+.aboutMe__link {
+    color: #FFF;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .aboutMe__link {
+        margin-top: 40px;
+    }
+}
+
+.aboutMe__link:hover {
+    opacity: 0.7;
+}

@@ -1,0 +1,9 @@
+.profile__caption {
+    color: #FFF;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 50%;
+}

@@ -1,0 +1,11 @@
+.navigation__btn-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+@media screen and (max-width:380px) {
+    .navigation__btn-wrapper {
+        gap: 14px
+    }
+}

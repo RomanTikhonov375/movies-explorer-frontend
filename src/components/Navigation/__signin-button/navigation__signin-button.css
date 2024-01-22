@@ -1,0 +1,26 @@
+.navigation__signin-button {
+    cursor: pointer;
+    color: #000;;
+    text-align: right;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    background-color: #3DDC84;
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.navigation__signin-button:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width:380px) {
+    .navigation__signin-button {
+        padding: 5px 12px;
+        font-size: 10px;
+    }
+}

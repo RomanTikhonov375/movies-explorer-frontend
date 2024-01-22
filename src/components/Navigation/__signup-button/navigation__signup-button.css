@@ -1,0 +1,25 @@
+.navigation__signup-button {
+    cursor: pointer;
+    color: #FFF;
+    text-align: right;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    text-decoration: none;
+    /* 133.333% */
+}
+
+.navigation__signup-button:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width:380px) {
+    .navigation__signup-button {
+        font-size: 10px;
+    }
+}

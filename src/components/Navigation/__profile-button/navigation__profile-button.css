@@ -1,0 +1,19 @@
+.navigation__profile-button {
+    cursor: pointer;
+    background: #313131;
+    border-radius: 20px;
+    padding: 8px 20px;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    border: 0;
+    text-decoration: none;
+}
+
+.navigation__profile-button:hover {
+    opacity: 0.8;
+}

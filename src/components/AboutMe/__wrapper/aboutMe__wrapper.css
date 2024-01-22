@@ -1,0 +1,21 @@
+.aboutMe__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 66px 0 100px 0;
+    gap: 280px;
+}
+
+@media screen and (max-width: 1000px) {
+    .aboutMe__wrapper {
+        margin-bottom: 90px;
+        gap: 49px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .aboutMe__wrapper {
+        flex-wrap: wrap-reverse;
+        margin: 60px 0 70px 0;
+        gap: 40px;
+    }
+}

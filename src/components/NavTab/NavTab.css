@@ -1,0 +1,16 @@
+.navTab {
+    margin: 150px auto 30px auto;
+}
+
+@media screen and (max-width:930px) {
+    .navTab {
+        margin-top: 314px;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .navTab {
+        margin-top: 212px;
+        margin-bottom: 17px;
+    }
+}

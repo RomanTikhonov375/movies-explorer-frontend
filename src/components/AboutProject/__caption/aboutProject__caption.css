@@ -1,0 +1,17 @@
+.aboutProject__caption {
+    color: #8B8B8B;
+    text-align: center;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    display: inline-block;
+    margin: 0;
+}
+
+@media screen and (max-width: 563px) {
+    .aboutProject__caption {
+        font-size: 11px;
+    }
+}

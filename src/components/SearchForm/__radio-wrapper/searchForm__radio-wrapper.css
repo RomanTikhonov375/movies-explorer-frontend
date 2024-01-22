@@ -1,0 +1,12 @@
+.searchForm__radio-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #424242;;
+}
+
+.searchForm__radio-button:hover + label::before {
+    opacity: 0.8;
+  }

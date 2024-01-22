@@ -1,0 +1,27 @@
+.moviesCard {
+    padding: 0;
+    margin: 70px 60px 28px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 360px);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 30px;
+    row-gap: 60px;
+    list-style: none;
+    justify-content: center;
+}
+
+@media screen and (max-width: 880px) {
+    .moviesCard {
+        row-gap: 53px;
+        margin: 70px 30px 28px 30px;
+        grid-template-columns: repeat(auto-fit, 330px);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .moviesCard{
+        row-gap: 35px;
+        margin: 34px 10px 13px 10px;
+        grid-template-columns: repeat(auto-fit, 300px);
+    }
+}

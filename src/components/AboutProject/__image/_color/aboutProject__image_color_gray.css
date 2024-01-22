@@ -1,0 +1,11 @@
+.aboutProject__image_color_gray {
+    width: 80%;
+    color: #FFF;
+    background: #303030;
+}
+
+@media screen and (max-width: 563px) {
+    .aboutProject__image_color_gray {
+        width: 65%;
+    }
+}

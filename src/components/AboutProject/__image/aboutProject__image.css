@@ -1,0 +1,20 @@
+.aboutProject__image {
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: inline-block;
+    padding: 9px 14px;
+    box-sizing: border-box;
+    margin: 0 0 14px 0;
+    height: 36px;
+}
+
+@media screen and (max-width: 563px) {
+    .aboutProject__image {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+}

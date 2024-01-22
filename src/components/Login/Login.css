@@ -1,0 +1,21 @@
+.login {
+    width: 396px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+@media screen and (max-width: 780px) {
+    .login {
+        margin-top: 232px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login {
+        align-items: center;
+        margin-top: 56px;
+        width: 260px;
+    }
+}

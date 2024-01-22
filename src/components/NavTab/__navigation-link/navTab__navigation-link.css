@@ -1,0 +1,13 @@
+.navTab__navigation-link {
+    display: block;
+    color: #FFF;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-decoration: none;
+
+    padding: 10px 16px;
+}
+

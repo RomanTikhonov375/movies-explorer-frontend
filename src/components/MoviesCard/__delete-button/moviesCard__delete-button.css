@@ -1,0 +1,16 @@
+.moviesCard__delete-button {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-image: url(../../../images/delete-button.svg);
+    border: 0;
+    background-color: transparent;
+    width: 21px;
+    height: 21px;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.moviesCard__delete-button:hover {
+    opacity: 0.8;
+}

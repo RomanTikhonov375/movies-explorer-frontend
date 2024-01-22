@@ -1,0 +1,22 @@
+.searchForm__input {
+   flex-grow: 1;
+    border-radius: 8px;
+    background: #2F2F2F;
+    color: #fff;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 16px 20px;
+    border: 0;
+}
+
+.searchForm__input:focus-visible {
+    outline: 1px solid gray;
+}
+
+.searchForm__input:focus-visible {
+    outline: 1px solid lightgray;
+}

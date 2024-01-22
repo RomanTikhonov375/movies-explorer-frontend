@@ -1,0 +1,13 @@
+.searchForm__submit-button {
+    width: 44px;
+    height: 44px;
+    background-image: url(../../../images/find-3.svg);
+    border: 0;
+    font-size: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.searchForm__submit-button:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,30 @@
+.techs__list-item {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter','Arial', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.56px;
+    border-radius: 10px;
+    background: #303030;
+    border: 0;
+    padding: 22px 0;
+    width: 90px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 770px) {
+    .techs__list-item {
+        width: 84px;
+    }
+}
+
+
+@media screen and (max-width: 685px) {
+    .techs__list-item {
+        font-size: 12px;
+    }
+    
+}
