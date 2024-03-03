@@ -75,6 +75,8 @@
 
 
 @import './components/Movies/Movies.css';
+@import './components/Movies/__alert/movies__alert.css';
+@import './components/Preloader/Preloader.css';
 @import './components/SearchForm/SearchForm.css';
 @import './components/SearchForm/__form/searchForm__form.css';
 @import './components/SearchForm/__header/searchForm__header.css';
@@ -115,10 +117,12 @@
 @import './components/Profile/__logout-button/profile__logout-button.css';
 @import './components/Profile/__error-text/profile__error-text.css';
 @import './components/Profile/__logout-link/profile__logout-link.css';
+@import './components/Profile/__input-error/profile__input-error.css';
 
 @import './components/Register/Register.css';
 @import './components/Register/__title/register__title.css';
 @import './components/AuthForm/AuthForm.css';
+@import './components/AuthForm/__api-error/authForm__api-error.css';
 @import './components/AuthForm/__wrapper/authForm__wrapper.css';
 @import './components/AuthForm/__list/authForm__list.css';
 @import './components/AuthInput/AuthInput.css';
@@ -139,3 +143,7 @@
 @import './components/NotFound/__caption/notFound__caption.css';
 @import './components/NotFound/__backward-button/notFound__backward-button.css';
 @import './components/AuthInput/__error/_active/authInput__error_active.css';
+
+html {
+    scroll-behavior: smooth;
+}

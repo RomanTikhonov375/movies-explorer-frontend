@@ -3,12 +3,12 @@ import Navigation from '../Navigation/Navigation';
 import Logo from '../Logo/Logo';
 
 
-function Header({ isLoggedIn }) {
+function Header() {
 
     return (
         <header className='Header'>
             <Logo></Logo>
-            <Navigation isLoggedIn={isLoggedIn}></Navigation>
+            <Navigation></Navigation>
         </header>
     );
 };
