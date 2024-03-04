@@ -13,7 +13,7 @@ const serverErrorMessages = {
   };
 
   const windowSize = {
-    desktopWidth: 1280,
+    desktopWidth: 1649,
     tabletWidth: 768,
     mobileWidth: 550
 
@@ -35,10 +35,13 @@ const serverErrorMessages = {
 
   const baseUrl = 'https://api.nomoreparties.co';
 
+  const SHORT_FILM_DURATION = 40
+
   export {
     serverErrorMessages,
     windowSize,
     countMoviesToShow,
     indexToShow,
-    baseUrl
+    baseUrl,
+    SHORT_FILM_DURATION
   }

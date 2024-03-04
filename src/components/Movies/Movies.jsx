@@ -17,16 +17,17 @@ import { windowSize, countMoviesToShow, indexToShow } from '../../constans/const
  */
 
 
-function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
-     // State variables
+function Movies({ setApiError, createMovie, deleteMovie, savedMoviesList }) {
+    // State variables
     const [isLoading, setIsLoading] = useState(false)
     const [searchedMovies, setSearchedMovies] = useState([]);
     const [moviesToRender, setMoviesToRender] = useState([]);
     const [moviesFilter, setMoviesFilter] = useState(getStorageSearchRequest() || { request: '', isShort: false });
     const [moviesCount, setMoviesCount] = useState();
-    const [moviesList, setMoviesList] = useState(getStorageMoviesSearch()?.slice(0, moviesCount));
+    const [moviesList, setMoviesList] = useState(getStorageMoviesSearch()?.slice(0, moviesCount) || []);
+    const [isSearch, setIsSearch] = useState(false);
 
-     // Function to handle window resize
+    // Function to handle window resize
     const handleResizeWindow = useCallback(() => {
         const width = window.innerWidth;
         let newMoviesCount;
@@ -34,12 +35,13 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
             newMoviesCount = countMoviesToShow.mobileCount;
         } else if (width <= windowSize.tabletWidth) {
             newMoviesCount = countMoviesToShow.tabletCount;
-        } else if (width < windowSize.desktopWidth) {
+        } else if (width <= windowSize.desktopWidth) {
             newMoviesCount = countMoviesToShow.desktopCount;
         } else {
             newMoviesCount = countMoviesToShow.wideDeskCount;
         }
         setMoviesCount(newMoviesCount);
+
     }, []);
 
     // Effect to handle window resize
@@ -59,11 +61,12 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
             newMoviesCount = prev => prev + indexToShow.mobileIndex;
         } else if (windowWidth <= windowSize.tabletWidth) {
             newMoviesCount = prev => prev + indexToShow.tabletIndex;
-        } else if (windowWidth < windowSize.desktopWidth) {
+        } else if (windowWidth <= windowSize.desktopWidth) {
             newMoviesCount = prev => prev + indexToShow.desktopIndex;
         } else {
             newMoviesCount = prev => prev + indexToShow.wideDeskIndex;
         }
+        console.log(newMoviesCount)
         setMoviesCount(newMoviesCount);
     }, []);
 
@@ -108,7 +111,7 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
         }
     }, [searchedMovies]);
 
-     // Function to filter movies based on search data
+    // Function to filter movies based on search data
     const filterMoviesHandler = (movies, searchData) => {
         const filteredMoviesByName = searchMoviesByName(movies, searchData.request);
         setSearchedMovies(filteredMoviesByName);
@@ -123,27 +126,33 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
             setMoviesList(filteredMoviesByNameAndShort)
         }
 
-   
+
         handleResizeWindow();
     };
 
-     // Function to handle search form submission
-    const searchFormSubmitHandler = useCallback((data) => {
+    // Function to get movies from API
+    const fetchMovies = useCallback(() => {
         setIsLoading(true);
+        return getMovies();
+    })
+
+    // Function to handle search form submission
+    const searchFormSubmitHandler = useCallback((data) => {
         const newMoviesFilter = { ...moviesFilter, request: data.search };
-        const movies = getMovies;
+        setIsSearch(true);
+        const movies = fetchMovies();
         movies.then((res) => {
             setMoviesFilter(newMoviesFilter);
             filterMoviesHandler(res, newMoviesFilter);
             setStorageSearchRequest(newMoviesFilter);
             setStorageMoviesSearch(moviesToRender);
         })
-        .catch((err) => {
-            console.error(err);
-            setApiError(true);
-        })
-        .finally(() => setIsLoading(false));
-    }, [getMovies, moviesFilter, setApiError, filterMoviesHandler, setStorageSearchRequest, setStorageMoviesSearch, moviesToRender, setIsLoading]);
+            .catch((err) => {
+                console.error(err);
+                setApiError(true);
+            })
+            .finally(() => setIsLoading(false));
+    }, [moviesFilter, setApiError, filterMoviesHandler, setStorageSearchRequest, setStorageMoviesSearch, moviesToRender, setIsLoading]);
 
     // Function to handle "Short" checkbox change
     const isShortCheckboxHandler = (e) => {
@@ -155,7 +164,7 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
     };
 
 
-  // Effect to update movies list based on movies to render and count
+    // Effect to update movies list based on movies to render and count
     useEffect(() => {
         setMoviesList(moviesToRender?.slice(0, moviesCount));
     }, [moviesToRender, moviesCount]);
@@ -163,10 +172,15 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
     // Return JSX for Movies component
     return (
         <main className='movies'>
-            <SearchForm searchFormSubmitHandler={searchFormSubmitHandler} isShortCheckboxHandler={isShortCheckboxHandler} moviesFilter={moviesFilter}></SearchForm>
+            <SearchForm
+                searchFormSubmitHandler={searchFormSubmitHandler}
+                isShortCheckboxHandler={isShortCheckboxHandler}
+                moviesFilter={moviesFilter}
+                isLoading={isLoading}>
+            </SearchForm>
 
             {isLoading ? (<Preloader />) : (
-                moviesToRender.length !== 0 ? (
+                moviesList.length !== 0 ? (
                     <MoviesCardList
                         moviesList={moviesList}
                         createMovie={createMovie}
@@ -174,10 +188,10 @@ function Movies({setApiError, createMovie, deleteMovie, savedMoviesList }) {
                         savedMoviesList={savedMoviesList}
                         handleShowMore={handleShowMore}
                         moviesToRender={moviesToRender} />
-                ) : (
-                    <p className='movies__alert'>Ничего не найдено</p>
-                )
+                ) : null
             )}
+
+            {isSearch && !isLoading && moviesList.length === 0 ? (<p className='movies__alert'>Ничего не найдено</p>) : null}
 
         </main>
     );

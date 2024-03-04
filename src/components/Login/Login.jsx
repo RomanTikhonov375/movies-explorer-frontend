@@ -14,7 +14,7 @@ import { serverErrorMessages } from '../../constans/constans'
  * @param {Function} setApiError - Function to set API error
  * @returns {JSX.Element} - Login component
  */
-function Login({ onLogin, apiError, setApiError }) {
+function Login({ onLogin, apiError, setApiError, isLoading, setIsLoading }) {
     // State for API error message
     const [apiErrorMessage, setApiErrorMessage] = useState('')
 
@@ -41,19 +41,12 @@ function Login({ onLogin, apiError, setApiError }) {
             value: true,
             message: 'Обязательное поле'
         },
-        minLength: {
-            value: 2,
-            message: 'Минимальное число символов : 2'
-        },
-        maxLength: {
-            value: 10,
-            message: 'Максимальное число символов: 10'
-        }
     })
 
     // Function to handle form submission
     const handleSubmitForm = (data) => {
         // Call onLogin function with email and password
+            
         onLogin({
             email: data.email,
             password: data.password
@@ -72,6 +65,8 @@ function Login({ onLogin, apiError, setApiError }) {
             } else if (err === 403) {
                 setApiErrorMessage(serverErrorMessages.authTokenFormatError)
             } else setApiErrorMessage(serverErrorMessages.serverError)
+        }).finally(() => {
+            setIsLoading(false);
         });
     }
 
@@ -84,11 +79,12 @@ function Login({ onLogin, apiError, setApiError }) {
             <AuthForm 
                 onSubmit={handleSubmit(handleSubmitForm)} 
                 className={' login__authForm'} 
-                buttonText={'Войти'} 
+                buttonText={isLoading ? 'Вход...' : 'Войти'} 
                 isDirty={isDirty} 
                 isValid={isValid}
                 apiError={apiError}
                 apiErrorMessage={apiErrorMessage}
+                isLoading={isLoading}
                 >
                 {/* Render email input */}
                 <AuthInput

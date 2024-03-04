@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonUserSubmit from '../ButtonUserSubmit/ButtonUserSubmit';
 
 
-function AuthForm({ onSubmit, children, className, buttonText, isDirty, isValid, apiError, apiErrorMessage }) {
+function AuthForm({ onSubmit, children, className, buttonText, isDirty, isValid, apiError, apiErrorMessage, isLoading }) {
 
     return (
         <form action="#" className={"authForm" + className} onSubmit={onSubmit}>
@@ -17,7 +17,7 @@ function AuthForm({ onSubmit, children, className, buttonText, isDirty, isValid,
             </fieldset>
             <div className="authForm__button-wrapper">
                 {apiError ? (<span className='authForm__api-error'>{apiErrorMessage}</span>) : null}
-                <ButtonUserSubmit buttonText={buttonText} isDirty={isDirty} isValid={isValid}></ButtonUserSubmit>
+                <ButtonUserSubmit buttonText={buttonText} isDirty={isDirty} isValid={isValid} isLoading={isLoading}></ButtonUserSubmit>
             </div>
 
 

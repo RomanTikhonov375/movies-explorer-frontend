@@ -1,7 +1,9 @@
+import { SHORT_FILM_DURATION } from "../constans/constans"
+
 export const searchShortMovies = (movies, searchData) => {
     if (searchData) {
         return movies.filter((movie) => {
-            return  movie.duration <= 40} )
+            return  movie.duration <= SHORT_FILM_DURATION} )
     } else return movies
 }
 

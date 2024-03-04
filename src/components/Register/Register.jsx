@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 
 import AuthForm from '../AuthForm/AuthForm';
@@ -13,23 +13,21 @@ import { serverErrorMessages } from '../../constans/constans'
  * @param {boolean} apiError - Flag for API error
  * @param {function} setApiError - Function for setting API error
  */
-function Register({ onRegister, apiError, setApiError }) {
+function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading }) {
     // State for API error message
     const [apiErrorMessage, setApiErrorMessage] = useState('');
     // Form control using react-hook-form
     const { register, handleSubmit, formState: { errors, isDirty, isValid }, reset } = useForm({ mode: 'onChange' });
-    // Navigation hook for page redirection
-    const navigate = useNavigate();
 
     // Register email input with validation rules
     const emailRegister = register('email', {
         required: {
             value: true,
-            message: 'Required field'
+            message: 'Обязательное поле'
         },
         pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'Enter a valid email'
+            message: 'Введите корректную почту'
         }
     });
 
@@ -37,36 +35,21 @@ function Register({ onRegister, apiError, setApiError }) {
     const passwordRegister = register('password', {
         required: {
             value: true,
-            message: 'Required field'
+            message: 'Обязательное поле'
         },
-        minLength: {
-            value: 2,
-            message: 'Minimum characters: 2'
-        },
-        maxLength: {
-            value: 10,
-            message: 'Maximum characters: 10'
-        }
+
     });
 
     // Register name input with validation rules
     const namedRegister = register('name', {
         required: {
             value: true,
-            message: 'Required field'
+            message: 'Обязательное поле'
         },
         pattern: {
             value: /^[^\s]+[0-9A-Za-z\s]*[^\s]+$/g,
-            message: 'Name should consist of Latin or Cyrillic letters'
+            message: 'Имя должно состоять из латинских или кириллических букв'
         },
-        minLength: {
-            value: 2,
-            message: 'Minimum characters: 2'
-        },
-        maxLength: {
-            value: 10,
-            message: 'Maximum characters: 10'
-        }
     });
 
     /**
@@ -78,9 +61,8 @@ function Register({ onRegister, apiError, setApiError }) {
             email: data.email,
             password: data.password,
             name: data.name
-        }).then(() => {
-            navigate('/movies', { replace: true });
-            reset();
+        }).finally(() => {
+            setIsLoading(false);
         })
         .catch((error) => {
             setApiError(true);
@@ -93,28 +75,30 @@ function Register({ onRegister, apiError, setApiError }) {
                 setApiErrorMessage(serverErrorMessages.defaultError);
             }
         });
+         reset();
     };
 
     // Render the registration form
     return (
         <main className="register">
             <Logo></Logo>
-            <h1 className="register__title">Welcome!</h1>
+            <h1 className="register__title">Добро пожаловать!</h1>
             <AuthForm 
                 onSubmit={handleSubmit(handleSubmitForm)} 
                 className={''} 
-                buttonText={'Register'} 
+                buttonText={isLoading ? 'Регистрация...' : 'Регистрация'} 
                 isDirty={isDirty} 
                 isValid={isValid}
                 apiErrorMessage={apiErrorMessage}
                 apiError={apiError}
+                isLoading={isLoading}
             >
                 <AuthInput
                     register={namedRegister}
-                    labelText={'Name'}
+                    labelText={'Имя'}
                     id={'user-name'}
                     inputType={'text'}
-                    placeholder={'Enter your name'}
+                    placeholder={'Введите ваше имя'}
                     minLength={2}
                     maxLength={30}
                     registerName={'name'}
@@ -125,16 +109,16 @@ function Register({ onRegister, apiError, setApiError }) {
                     labelText={'E-mail'}
                     id={'user-email'}
                     inputType={'email'}
-                    placeholder={'Enter your Email'}
+                    placeholder={'Введите почту'}
                     registerName={'email'}
                     errors={errors}
                 ></AuthInput>
                 <AuthInput
                     register={passwordRegister}
-                    labelText={'Password'}
+                    labelText={'Пароль'}
                     id={'user-password'}
                     inputType={'password'}
-                    placeholder={'Create a password'}
+                    placeholder={'Придуйте пароль'}
                     errorMessage={'Something went wrong...'}
                     className={'authInput__error_active'}
                     minLength={8}
@@ -143,7 +127,7 @@ function Register({ onRegister, apiError, setApiError }) {
                     errors={errors}
                 ></AuthInput>
             </AuthForm>
-            <p className="register__footer">Already registered?<Link className='register__link' to={'/signin'}>Sign in</Link></p>
+            <p className="register__footer">Уже зарегистрированы?<Link className='register__link' to={'/signin'}>Войти</Link></p>
         </main>
     );
 }

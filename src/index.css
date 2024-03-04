@@ -86,6 +86,8 @@
 @import './components/SearchForm/__radio-wrapper/searchForm__radio-wrapper.css';
 @import './components/SearchForm/__radio-button/searchForm__radio-button.css';
 @import './components/SearchForm/__radio-caption/searchForm__radio-caption.css';
+@import './components/SearchForm/__error/searchForm__error.css';
+@import './components/SearchForm/__error/_active/searchForm__error_active.css';
 
 @import './components/MoviesCardList/MoviesCardList.css';
 @import './components/MoviesCard/MoviesCard.css';
@@ -129,6 +131,8 @@
 @import './components/AuthInput/__caption/authInput__caption.css';
 @import './components/AuthInput/__input/authInput__input.css';
 @import './components/AuthInput/__error/authInput__error.css';
+@import './components/AuthForm/__api-success/authForm__api-success.css';
+@import './components/AuthForm/__api-success/_active/authForm__api-success_active.css';
 @import './components/Register/__footer/register__footer.css';
 @import './components/Register/__link/register__link.css';
 

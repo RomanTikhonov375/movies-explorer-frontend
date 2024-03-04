@@ -16,15 +16,16 @@ import Header from '../Header/Header';
  * @param {boolean} apiError - Flag indicating if there is an API error.
  * @param {function} setApiError - Function to set API error.
  */
-function Profile({ onUpdate, onLogout, apiError, setApiError }) {
+function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLoading }) {
 
     // State variables
     const [apiErrorMessage, setApiErrorMessage] = useState(''); // API error message
     const { currentUser } = useContext(CurrentUserContext); // Current user context
     const [editUser, setEditUser] = useState(''); // Flag to indicate if user is in edit mode
+    const [editSuccess, setEditSuccess] = useState(false); // Flag to indicate if edit was successful
 
     // Form control with validation
-    const { register, handleSubmit, formState: { errors, isDirty, isValid }, reset, setValue } = useForm({ mode: 'onChange' });
+    const { register, handleSubmit, formState: { errors, isDirty, isValid }, reset, setValue, getValues } = useForm({ mode: 'onChange' });
 
     // Register validation for email input
     const emailRegister = register('email', {
@@ -35,6 +36,13 @@ function Profile({ onUpdate, onLogout, apiError, setApiError }) {
         pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
             message: 'Enter a valid email address'
+        },
+        validate: {
+            checkEmail: (value, formValues) => {
+                if (value === currentUser.email && formValues.name === currentUser.name) {
+                    return false
+                }
+            }
         }
     })
 
@@ -55,6 +63,13 @@ function Profile({ onUpdate, onLogout, apiError, setApiError }) {
         maxLength: {
             value: 10,
             message: 'Maximum characters: 10'
+        },
+        validate: {
+            checkName: (value, formValues) => {
+                if (value === currentUser.name && formValues.email === currentUser.email) {
+                    return false
+                }
+            }
         }
     })
 
@@ -65,6 +80,13 @@ function Profile({ onUpdate, onLogout, apiError, setApiError }) {
             email: data.email
         }).then(() => {
             setEditUser(false);
+            setIsLoading(false);
+            if (!apiError) {
+                setEditSuccess(true);
+                setTimeout(() => {
+                    setEditSuccess(false)
+                }, 3000)
+            }
         })
         .catch((error) => {
             setApiError(true);
@@ -91,6 +113,8 @@ function Profile({ onUpdate, onLogout, apiError, setApiError }) {
         setValue("name", currentUser.name);
         setValue("email", currentUser.email);
     }, [currentUser, setValue]);
+
+
 
     // Render profile form and buttons
     return (
@@ -131,13 +155,17 @@ function Profile({ onUpdate, onLogout, apiError, setApiError }) {
                             <span className='profile__input-error'>{errors['email'] ? errors['email'].message : ''}</span>
                         </div>
                     </fieldset>
+                    {apiError ? 
+                            (<span className='authForm__api-error'>{apiErrorMessage}</span>) : 
+                              (<span className={`authForm__api-success ${editSuccess ? 'authForm__api-success_active' : ''}`}>Данные успешно обновлены</span>)
+                            }
                     {editUser ?
                         <>
-                            {apiError ? (<span className='authForm__api-error'>{apiErrorMessage}</span>) : null}
                             <ButtonUserSubmit
-                                buttonText={'Сохранить'}
+                                buttonText={!isLoading? 'Сохранить' : 'Сохранение...'}
                                 isDirty={isDirty}
-                                isValid={isValid}>
+                                isValid={isValid}
+                                isLoading={isLoading}>
                             </ButtonUserSubmit>
                         </>
                         :

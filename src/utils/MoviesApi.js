@@ -14,6 +14,6 @@ const chechResponse = (res) => {
     }
 }
 
-export const getMovies = request(CONFIG.moviesApiConfig)
+export const getMovies = () => request(CONFIG.moviesApiConfig)
 
 

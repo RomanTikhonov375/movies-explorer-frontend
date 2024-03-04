@@ -7,9 +7,10 @@ export const CONFIG = {
     },
 
     mainApiConfig: {
-        baseUrl: 'https://api.for-movies.nomoredomainsmonster.ru',
+        baseUrl: 'http://localhost:3001',
         headers: {
             'Content-Type': 'application/json',
         }
     }
+    // 'https://api.for-movies.nomoredomainsmonster.ru'
 }

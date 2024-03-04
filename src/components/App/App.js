@@ -18,7 +18,8 @@ import { baseUrl } from '../../constans/constans';
 
 function App() {
 
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn'));
+  const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "", email: "" });
   const [savedMoviesList, setSavedMoviesList] = useState([]);
   const [apiError, setApiError] = useState(false);
@@ -29,30 +30,29 @@ function App() {
 
   // Callback for Login summit button
   const handleLogin = async ({ email, password }) => {
-    try {
-      const res = await mainApi.login({ email, password });
-      if (res.token) {
-        localStorage.setItem('jwt', res.token);
-        setLoggedIn(true);
-      }
-    } catch (error) {
-      console.error(error);
+    setIsLoading(true);
+    const res = await mainApi.login({ email, password });
+    if (res.token) {
+      localStorage.setItem('jwt', res.token);
+      setLoggedIn(true);
+      navigate('/movies');
     }
+
   }
 
   // Callback for Register summit button
   const handleRegister = async ({ name, email, password }) => {
-    try {
-      const res = await mainApi.register({ name, email, password });
-      return res;
-    } catch (error) {
-      console.error(error);
+    setIsLoading(true);
+    const res = await mainApi.register({ name, email, password });
+    if (res._id) {
+      handleLogin({ email, password });
     }
   }
 
-   // Callback for updating user profile
+  // Callback for updating user profile
   const handleUpdateUser = async ({ name, email }) => {
     try {
+      setIsLoading(true);
       const res = await mainApi.editingProfile({ name, email });
       setCurrentUser(res);
       console.log(res);
@@ -61,7 +61,7 @@ function App() {
     }
   }
 
-   // Callback for user logout
+  // Callback for user logout
   const handleLogout = () => {
     setLoggedIn(false);
     setCurrentUser({});
@@ -85,7 +85,7 @@ function App() {
     }
   }, [isLoggedIn]);
 
-   // Check authentication token on app load
+  // Check authentication token on app load
   const authCkeck = async (jwt) => {
     const path = location.pathname;
     try {
@@ -105,7 +105,7 @@ function App() {
     }
   }, []);
 
-   // Create a movie
+  // Create a movie
   const createMovie = (movie) => {
     const {
       country,
@@ -137,8 +137,7 @@ function App() {
   }
 
   // Delete a movie
-  const deleteMovie = (movieId) => {
-    console.log(movieId);
+  const deleteMovie = (movieId) => {;
     const savedMovie = savedMoviesList.find((item) => item.movieId === movieId);
     return mainApi.deleteMovie(savedMovie._id).then((res) => {
       setSavedMoviesList(savedMoviesList.filter((movie) => movie._id !== savedMovie._id));
@@ -157,7 +156,13 @@ function App() {
             <Route path='/movies' element={
               <ProtectedRouteElement isLoggedIn={isLoggedIn}>
 
-                <Movies apiError={apiError} setApiError={setApiError} createMovie={createMovie} deleteMovie={deleteMovie} setSavedMoviesList={setSavedMoviesList} savedMoviesList={savedMoviesList} />
+                <Movies
+                  apiError={apiError}
+                  setApiError={setApiError}
+                  createMovie={createMovie}
+                  deleteMovie={deleteMovie}
+                  setSavedMoviesList={setSavedMoviesList}
+                  savedMoviesList={savedMoviesList}/>
 
               </ProtectedRouteElement>
 
@@ -178,6 +183,8 @@ function App() {
             <ProtectedRouteElement isLoggedIn={isLoggedIn}>
 
               <Profile
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
                 setCurrentUser={setCurrentUser}
                 onUpdate={handleUpdateUser}
                 onLogout={handleLogout}
@@ -190,8 +197,26 @@ function App() {
 
           }></Route>
 
-          <Route path='/signin' element={<Login onLogin={handleLogin} apiError={apiError} setApiError={setApiError} />}></Route>
-          <Route path='/signup' element={<Register onRegister={handleRegister} apiError={apiError} setApiError={setApiError} />}></Route>
+          <Route path='/signin' element={
+            <Login
+              onLogin={handleLogin}
+              apiError={apiError}
+              setApiError={setApiError}
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+            />}>
+
+          </Route>
+          <Route path='/signup' element={
+            <Register
+              onRegister={handleRegister}
+              apiError={apiError}
+              setApiError={setApiError}
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+            />}>
+
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
