@@ -31,14 +31,14 @@ function Movies({ setApiError, createMovie, deleteMovie, savedMoviesList }) {
     const handleResizeWindow = useCallback(() => {
         const width = window.innerWidth;
         let newMoviesCount;
-        if (width <= windowSize.mobileWidth) {
-            newMoviesCount = countMoviesToShow.mobileCount;
-        } else if (width <= windowSize.tabletWidth) {
-            newMoviesCount = countMoviesToShow.tabletCount;
-        } else if (width <= windowSize.desktopWidth) {
-            newMoviesCount = countMoviesToShow.desktopCount;
+        if (width <= windowSize.MOBILE_WIDTH) {
+            newMoviesCount = countMoviesToShow.MOBILE_COUNT;
+        } else if (width <= windowSize.TABLE_WIDTH) {
+            newMoviesCount = countMoviesToShow.TABLE_COUNT;
+        } else if (width <= windowSize.DESKTOP_WIDTH) {
+            newMoviesCount = countMoviesToShow.DESKTOP_COUNT;
         } else {
-            newMoviesCount = countMoviesToShow.wideDeskCount;
+            newMoviesCount = countMoviesToShow.WIDEDESK_COUNT;
         }
         setMoviesCount(newMoviesCount);
 
@@ -56,18 +56,15 @@ function Movies({ setApiError, createMovie, deleteMovie, savedMoviesList }) {
     // Function to handle "Show More" button click
     const handleShowMore = useCallback(() => {
         const windowWidth = window.innerWidth;
-        let newMoviesCount;
-        if (windowWidth <= windowSize.mobileWidth) {
-            newMoviesCount = prev => prev + indexToShow.mobileIndex;
-        } else if (windowWidth <= windowSize.tabletWidth) {
-            newMoviesCount = prev => prev + indexToShow.tabletIndex;
-        } else if (windowWidth <= windowSize.desktopWidth) {
-            newMoviesCount = prev => prev + indexToShow.desktopIndex;
+        if (windowWidth <= windowSize.MOBILE_WIDTH) {
+            setMoviesCount(prev => prev + indexToShow.MOBILE_INDEX);
+        } else if (windowWidth <= windowSize.TABLE_WIDTH) {
+            setMoviesCount(prev => prev + indexToShow.TABLET_INDEX);
+        } else if (windowWidth <= windowSize.DESKTOP_WIDTH) {
+            setMoviesCount(prev => prev + indexToShow.DESKTOP_INDEX);
         } else {
-            newMoviesCount = prev => prev + indexToShow.wideDeskIndex;
+            setMoviesCount(prev => prev + indexToShow.WIDEDESK_INDEX);
         }
-        console.log(newMoviesCount)
-        setMoviesCount(newMoviesCount);
     }, []);
 
 

@@ -4,8 +4,8 @@ function AuthInput({ id, labelText, inputType, placeholder, errorMessage, classN
     return (
         <>
             <label htmlFor={id} className="authInput__caption">{labelText}</label>
-            <input type={inputType} className="authInput__input" id={id} placeholder={placeholder} name={id} minLength={minLength} maxLength={maxLength} {...register} />
-            <span className={`authInput__error ${errors[registerName] ? 'authInput__error_active' : ''}`}>{errors[registerName] ? errors[registerName].message : ''}`</span>
+            <input type={inputType} className="authInput__input" id={id} placeholder={placeholder} name={id} {...register} />
+            <span className={`authInput__error ${errors[registerName] ? 'authInput__error_active' : ''}`}>{errors[registerName] ? errors[registerName].message : ''}</span>
         </>
     );
 }

@@ -1,39 +1,39 @@
 const serverErrorMessages = {
-    userOnRegisterError: 'При регистрации пользователя произошла ошибка.',
-    userOnEditError: 'При обновлении профиля произошла ошибка.',
-    serverError: '500 На сервере произошла ошибка.',
-    notFoundError: '404 Страница по указанному маршруту не найдена.',
-    defaultError: 'Что-то пошло не так...',
-    authError: 'Вы ввели неправильный логин или пароль.',
-    authTokenFormatError: 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.',
-    authTokenError: 'При авторизации произошла ошибка. Переданный токен некорректен.',
-    emailAlredyExistError: 'Пользователь с таким email уже существует.',
+    USER_REGISTER_ERROR: 'При регистрации пользователя произошла ошибка.',
+    USER_EDIT_ERROR: 'При обновлении профиля произошла ошибка.',
+    SERVER_ERROR: '500 На сервере произошла ошибка.',
+    NOT_FOUND_ERROR: '404 Страница по указанному маршруту не найдена.',
+    DEFAULT_ERROR: 'Что-то пошло не так...',
+    AUTH_ERROR: 'Вы ввели неправильный логин или пароль.',
+    AUTH_TOKEN_FORMAT_ERROR: 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.',
+    AUTH_TOKEN_ERROR: 'При авторизации произошла ошибка. Переданный токен некорректен.',
+    EMAIL_ALREADY_EXISTS_ERROR: 'Пользователь с таким email уже существует.',
 
 
   };
 
   const windowSize = {
-    desktopWidth: 1649,
-    tabletWidth: 768,
-    mobileWidth: 550
+    DESKTOP_WIDTH: 1649,
+    TABLE_WIDTH: 1276,
+    MOBILE_WIDTH: 766
 
   }
 
   const countMoviesToShow = {
-    wideDeskCount: 16,
-    desktopCount: 12,
-    tabletCount: 8,
-    mobileCount: 5
+    WIDEDESK_COUNT: 16,
+    DESKTOP_COUNT: 12,
+    TABLE_COUNT: 8,
+    MOBILE_COUNT: 5
   }
 
   const indexToShow = {
-    wideDeskIndex: 4,
-    desktopIndex: 3,
-    tabletIndex: 2,
-    mobileIndex: 2,
+    WIDEDESK_INDEX: 4,
+    DESKTOP_INDEX: 3,
+    TABLET_INDEX: 2,
+    MOBILE_INDEX: 2,
   }
 
-  const baseUrl = 'https://api.nomoreparties.co';
+  const BASE_URL = 'https://api.nomoreparties.co';
 
   const SHORT_FILM_DURATION = 40
 
@@ -42,6 +42,6 @@ const serverErrorMessages = {
     windowSize,
     countMoviesToShow,
     indexToShow,
-    baseUrl,
+    BASE_URL,
     SHORT_FILM_DURATION
   }

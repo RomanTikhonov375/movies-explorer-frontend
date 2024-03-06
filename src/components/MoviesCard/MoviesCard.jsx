@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { getConvertTime } from '../../utils/timeConverter';
-import { baseUrl } from '../../constans/constans';
+import { BASE_URL } from '../../constans/constans';
 
 /**
  * Represents a movie card component
@@ -58,7 +58,7 @@ function MoviesCard({movie, createMovie, deleteMovie, savedMoviesList}) {
     return (
         <>
             <li className="moviesCard__item">
-                <a href={trailerLink} target='_blank' rel='noreferrer'><img src={image.url ? `${baseUrl}${image.url}` : image} alt={`Кадр фильма ${nameRU}`} className='moviesCard__image' /></a>
+                <a href={trailerLink} target='_blank' rel='noreferrer'><img src={image.url ? `${BASE_URL}${image.url}` : image} alt={`Кадр фильма ${nameRU}`} className='moviesCard__image' /></a>
                 <div className="moviesCard__wrapper">
                     <h2 className="moviesCard__caption">{nameRU}</h2>
                     <p className="moviesCard__duratation">{getConvertTime(duration)}</p>

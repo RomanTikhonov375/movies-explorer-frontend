@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 
 import AuthForm from '../AuthForm/AuthForm';
@@ -13,11 +13,11 @@ import { serverErrorMessages } from '../../constans/constans'
  * @param {boolean} apiError - Flag for API error
  * @param {function} setApiError - Function for setting API error
  */
-function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading }) {
+function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading, isLoggedIn }) {
     // State for API error message
     const [apiErrorMessage, setApiErrorMessage] = useState('');
     // Form control using react-hook-form
-    const { register, handleSubmit, formState: { errors, isDirty, isValid }, reset } = useForm({ mode: 'onChange' });
+    const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm({ mode: 'onChange' });
 
     // Register email input with validation rules
     const emailRegister = register('email', {
@@ -47,9 +47,17 @@ function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading }
             message: 'Обязательное поле'
         },
         pattern: {
-            value: /^[^\s]+[0-9A-Za-z\s]*[^\s]+$/g,
-            message: 'Имя должно состоять из латинских или кириллических букв'
+            value: /^[^\s]+[0-9A-Za-zА-Яа-я\s]*[^\s]+$/g,
+            message: 'Строка должна состоять только из цифр и букв, а так же не может содержать пробелы в начале и в конце'
         },
+        minLength: {
+            value: 2,
+            message: 'Минимальная длина 2'
+        },
+        maxLength: {
+            value: 30,
+            message: 'Максимальная длина 30'
+        }
     });
 
     /**
@@ -68,18 +76,19 @@ function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading }
             setApiError(true);
             const err = parseInt(error.replace(/[^\d]/g, ''));
             if (err === 409) {
-                setApiErrorMessage(serverErrorMessages.emailAlredyExistError);
+                setApiErrorMessage(serverErrorMessages.EMAIL_ALREADY_EXISTS_ERROR);
             } else if (err === 400) {
-                setApiErrorMessage(serverErrorMessages.userOnRegisterError);
+                setApiErrorMessage(serverErrorMessages.USER_REGISTER_ERROR);
             } else {
-                setApiErrorMessage(serverErrorMessages.defaultError);
+                setApiErrorMessage(serverErrorMessages.DEFAULT_ERROR);
             }
         });
-         reset();
+
     };
 
     // Render the registration form
-    return (
+    return isLoggedIn ? ( <Navigate to="/" replace />
+    ) :(
         <main className="register">
             <Logo></Logo>
             <h1 className="register__title">Добро пожаловать!</h1>
@@ -99,8 +108,6 @@ function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading }
                     id={'user-name'}
                     inputType={'text'}
                     placeholder={'Введите ваше имя'}
-                    minLength={2}
-                    maxLength={30}
                     registerName={'name'}
                     errors={errors}
                 ></AuthInput>
@@ -119,10 +126,7 @@ function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading }
                     id={'user-password'}
                     inputType={'password'}
                     placeholder={'Придуйте пароль'}
-                    errorMessage={'Something went wrong...'}
                     className={'authInput__error_active'}
-                    minLength={8}
-                    maxLength={30}
                     registerName={'password'}
                     errors={errors}
                 ></AuthInput>

@@ -14,7 +14,7 @@ import NotFound from '../NotFound/NotFound';
 import { mainApi } from '../../utils/MainApi';
 import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElement';
 import PageLayout from '../PageLayout/PageLayout'
-import { baseUrl } from '../../constans/constans';
+import { BASE_URL } from '../../constans/constans';
 
 function App() {
 
@@ -51,14 +51,10 @@ function App() {
 
   // Callback for updating user profile
   const handleUpdateUser = async ({ name, email }) => {
-    try {
       setIsLoading(true);
       const res = await mainApi.editingProfile({ name, email });
       setCurrentUser(res);
       console.log(res);
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   // Callback for user logout
@@ -125,12 +121,12 @@ function App() {
       duration,
       year,
       description,
-      image: `${baseUrl}${url}`,
+      image: `${BASE_URL}${url}`,
       trailerLink,
       movieId,
       nameRU,
       nameEN,
-      thumbnail: `${baseUrl}${formats.thumbnail.url}`
+      thumbnail: `${BASE_URL}${formats.thumbnail.url}`
     }).then((movieData) => {
       setSavedMoviesList([...savedMoviesList, movieData]);
     });
@@ -199,6 +195,7 @@ function App() {
 
           <Route path='/signin' element={
             <Login
+              isLoggedIn={isLoggedIn}
               onLogin={handleLogin}
               apiError={apiError}
               setApiError={setApiError}
@@ -209,6 +206,7 @@ function App() {
           </Route>
           <Route path='/signup' element={
             <Register
+              isLoggedIn={isLoggedIn}
               onRegister={handleRegister}
               apiError={apiError}
               setApiError={setApiError}

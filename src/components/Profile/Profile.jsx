@@ -25,17 +25,17 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
     const [editSuccess, setEditSuccess] = useState(false); // Flag to indicate if edit was successful
 
     // Form control with validation
-    const { register, handleSubmit, formState: { errors, isDirty, isValid }, reset, setValue, getValues } = useForm({ mode: 'onChange' });
+    const { register, handleSubmit, formState: { errors, isDirty, isValid }, reset, setValue } = useForm({ mode: 'onChange' });
 
     // Register validation for email input
     const emailRegister = register('email', {
         required: {
             value: true,
-            message: 'Required field'
+            message: 'Обязательное поле'
         },
         pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'Enter a valid email address'
+            message: 'Введите корректный адрес электронной почты'
         },
         validate: {
             checkEmail: (value, formValues) => {
@@ -50,20 +50,21 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
     const namedRegister = register('name', {
         required: {
             value: true,
-            message: 'Required field'
+            message: 'Обязательное поле'
         },
         pattern: {
-            value: /^[^\s]+[0-9A-Za-z\s]*[^\s]+$/g,
-            message: 'Name must consist of Latin or Cyrillic letters'
+            value: /^[^\s]+[0-9A-Za-zА-Яа-я\s]*[^\s]+$/g,
+            message: 'Строка должна состоять только из цифр и букв, а так же не может содержать пробелы в начале и в конце'
+        },
+        maxLength: {
+            value: 30,
+            message: 'Максимальная длина 30 символов'
         },
         minLength: {
             value: 2,
-            message: 'Minimum characters: 2'
+            message: 'Минимальная длина 2 символа'
         },
-        maxLength: {
-            value: 10,
-            message: 'Maximum characters: 10'
-        },
+
         validate: {
             checkName: (value, formValues) => {
                 if (value === currentUser.name && formValues.email === currentUser.email) {
@@ -75,30 +76,32 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
 
     // Handle form submission
     const handleSubmitForm = (data) => {
+
         onUpdate({
             name: data.name,
             email: data.email
         }).then(() => {
+            setApiError(false);
             setEditUser(false);
             setIsLoading(false);
-            if (!apiError) {
-                setEditSuccess(true);
-                setTimeout(() => {
-                    setEditSuccess(false)
-                }, 3000)
-            }
+            setEditSuccess(true);
+            setTimeout(() => {
+                setEditSuccess(false)
+            }, 3000)
+
         })
-        .catch((error) => {
-            setApiError(true);
-            const err = parseInt(error.replace(/[^\d]/g, ''))
-            if (err === 409) {
-                setApiErrorMessage(serverErrorMessages.emailAlredyExistError)
+            .catch((error) => {
+                setIsLoading(false);
+                setApiError(true);
+                const err = parseInt(error.replace(/[^\d]/g, ''))
+                if (err === 409) {
+                    setApiErrorMessage(serverErrorMessages.EMAIL_ALREADY_EXISTS_ERROR)
+                }
+                else if (err === 400) {
+                    setApiErrorMessage(serverErrorMessages.USER_EDIT_ERROR)
+                } else setApiErrorMessage(serverErrorMessages.DEFAULT_ERROR)
             }
-            else if (err === 400) {
-                setApiErrorMessage(serverErrorMessages.userOnEditError)
-            } else setApiErrorMessage(serverErrorMessages.defaultError)
-        }
-        );
+            );
     }
 
     // Handle user logout
@@ -112,7 +115,7 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
         reset();
         setValue("name", currentUser.name);
         setValue("email", currentUser.email);
-    }, [currentUser, setValue]);
+    }, [currentUser, setValue, reset]);
 
 
 
@@ -128,8 +131,6 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
                             <label htmlFor="input-name" className="profile__caption">Имя</label>
                             <input
                                 {...namedRegister}
-                                minLength={2}
-                                maxLength={30}
                                 type="text"
                                 className="profile__input"
                                 id='input-name'
@@ -155,14 +156,14 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
                             <span className='profile__input-error'>{errors['email'] ? errors['email'].message : ''}</span>
                         </div>
                     </fieldset>
-                    {apiError ? 
-                            (<span className='authForm__api-error'>{apiErrorMessage}</span>) : 
-                              (<span className={`authForm__api-success ${editSuccess ? 'authForm__api-success_active' : ''}`}>Данные успешно обновлены</span>)
-                            }
+                    {apiError ?
+                        (<span className='authForm__api-error'>{apiErrorMessage}</span>) :
+                        (<span className={`authForm__api-success ${editSuccess ? 'authForm__api-success_active' : ''}`}>Данные успешно обновлены</span>)
+                    }
                     {editUser ?
                         <>
                             <ButtonUserSubmit
-                                buttonText={!isLoading? 'Сохранить' : 'Сохранение...'}
+                                buttonText={!isLoading ? 'Сохранить' : 'Сохранение...'}
                                 isDirty={isDirty}
                                 isValid={isValid}
                                 isLoading={isLoading}>

@@ -11,7 +11,7 @@ function SearchForm({ searchFormSubmitHandler, isShortCheckboxHandler, moviesFil
     // Destructuring useForm from react-hook-form library
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: { search: moviesFilter.request, isShort: moviesFilter.isShort },
-        value: { search: moviesFilter.request, isShort: moviesFilter.isShort }, mode: 'onSubmit'
+        value: { search: moviesFilter.request, isShort: moviesFilter.isShort }, mode: 'onSubmit', reValidateMode: "onSubmit"
     });
 
     // Registering search input with required validation

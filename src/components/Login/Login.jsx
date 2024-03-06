@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 
 import AuthForm from '../AuthForm/AuthForm';
@@ -14,7 +14,7 @@ import { serverErrorMessages } from '../../constans/constans'
  * @param {Function} setApiError - Function to set API error
  * @returns {JSX.Element} - Login component
  */
-function Login({ onLogin, apiError, setApiError, isLoading, setIsLoading }) {
+function Login({ onLogin, apiError, setApiError, isLoading, setIsLoading, isLoggedIn }) {
     // State for API error message
     const [apiErrorMessage, setApiErrorMessage] = useState('')
 
@@ -59,19 +59,20 @@ function Login({ onLogin, apiError, setApiError, isLoading, setIsLoading }) {
             // Process error code and set error message
             const err = parseInt(error.replace(/[^\d]/g, ''))
             if (err === 400) {
-                setApiErrorMessage(serverErrorMessages.authTokenError)
+                setApiErrorMessage(serverErrorMessages.AUTH_TOKEN_ERROR)
             } else if (err === 401) {
-                setApiErrorMessage(serverErrorMessages.authError)
+                setApiErrorMessage(serverErrorMessages.AUTH_ERROR)
             } else if (err === 403) {
-                setApiErrorMessage(serverErrorMessages.authTokenFormatError)
-            } else setApiErrorMessage(serverErrorMessages.serverError)
+                setApiErrorMessage(serverErrorMessages.AUTH_TOKEN_FORMAT_ERROR)
+            } else setApiErrorMessage(serverErrorMessages.SERVER_ERROR)
         }).finally(() => {
             setIsLoading(false);
         });
     }
 
     // Render login component
-    return (
+    return isLoggedIn ? ( <Navigate to="/" replace />
+    ) : (
         <main className="login">
             <Logo></Logo>
             <h1 className="login__title">Добро пожаловать!</h1>
