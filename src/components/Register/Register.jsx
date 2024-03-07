@@ -47,8 +47,8 @@ function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading, 
             message: 'Обязательное поле'
         },
         pattern: {
-            value: /^[^\s]+[0-9A-Za-zА-Яа-я\s]*[^\s]+$/g,
-            message: 'Строка должна состоять только из цифр и букв, а так же не может содержать пробелы в начале и в конце'
+            value: /^[a-zA-Za-яА-Я -]+$/,
+            message: 'Строка может содержать только буквы латинского и кирильского алфавита, пробел и дефис'
         },
         minLength: {
             value: 2,
