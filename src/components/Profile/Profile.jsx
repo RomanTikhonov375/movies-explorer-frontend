@@ -53,7 +53,7 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
             message: 'Обязательное поле'
         },
         pattern: {
-            value: /^[a-zA-Za-яА-Я -]+$/,
+            value: /^([a-zA-Za-яА-Я]+\s?-?)*[a-zA-Za-яА-Я]+$/,
             message: 'Строка может содержать только буквы латинского и кирильского алфавита, пробел и дефис'
         },
         maxLength: {
