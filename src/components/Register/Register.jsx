@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import AuthForm from '../AuthForm/AuthForm';
 import AuthInput from '../AuthInput/AuthInput';
 import Logo from '../Logo/Logo';
-import { serverErrorMessages } from '../../constans/constans'
+import { SERVER_ERROR_MESSAGE } from '../../constans/constans'
 
 /**
  * Component for user registration
@@ -76,11 +76,11 @@ function Register({ onRegister, apiError, setApiError, isLoading, setIsLoading, 
             setApiError(true);
             const err = parseInt(error.replace(/[^\d]/g, ''));
             if (err === 409) {
-                setApiErrorMessage(serverErrorMessages.EMAIL_ALREADY_EXISTS_ERROR);
+                setApiErrorMessage(SERVER_ERROR_MESSAGE.EMAIL_ALREADY_EXISTS_ERROR);
             } else if (err === 400) {
-                setApiErrorMessage(serverErrorMessages.USER_REGISTER_ERROR);
+                setApiErrorMessage(SERVER_ERROR_MESSAGE.USER_REGISTER_ERROR);
             } else {
-                setApiErrorMessage(serverErrorMessages.DEFAULT_ERROR);
+                setApiErrorMessage(SERVER_ERROR_MESSAGE.DEFAULT_ERROR);
             }
         });
 

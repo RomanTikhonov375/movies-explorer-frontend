@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import { searchMoviesByName, searchShortMovies } from '../../utils/searchMovies';
 import { getMovies } from '../../utils/MoviesApi';
-import { windowSize, countMoviesToShow, indexToShow } from '../../constans/constans';
+import { WINDOW_SIZE, COUNT_MOVIES_TO_SHOW, INDEX_TO_SHOW } from '../../constans/constans';
 
 /**
  * Movies component for displaying and managing movies
@@ -31,14 +31,14 @@ function Movies({ setApiError, createMovie, deleteMovie, savedMoviesList }) {
     const handleResizeWindow = useCallback(() => {
         const width = window.innerWidth;
         let newMoviesCount;
-        if (width <= windowSize.MOBILE_WIDTH) {
-            newMoviesCount = countMoviesToShow.MOBILE_COUNT;
-        } else if (width <= windowSize.TABLE_WIDTH) {
-            newMoviesCount = countMoviesToShow.TABLE_COUNT;
-        } else if (width <= windowSize.DESKTOP_WIDTH) {
-            newMoviesCount = countMoviesToShow.DESKTOP_COUNT;
+        if (width <= WINDOW_SIZE.MOBILE) {
+            newMoviesCount = COUNT_MOVIES_TO_SHOW.MOBILE;
+        } else if (width <= WINDOW_SIZE.TABLE) {
+            newMoviesCount = COUNT_MOVIES_TO_SHOW.TABLE;
+        } else if (width <= WINDOW_SIZE.DESKTOP) {
+            newMoviesCount = COUNT_MOVIES_TO_SHOW.DESKTOP;
         } else {
-            newMoviesCount = countMoviesToShow.WIDEDESK_COUNT;
+            newMoviesCount = COUNT_MOVIES_TO_SHOW.WIDEDESK;
         }
         setMoviesCount(newMoviesCount);
 
@@ -56,14 +56,14 @@ function Movies({ setApiError, createMovie, deleteMovie, savedMoviesList }) {
     // Function to handle "Show More" button click
     const handleShowMore = useCallback(() => {
         const windowWidth = window.innerWidth;
-        if (windowWidth <= windowSize.MOBILE_WIDTH) {
-            setMoviesCount(prev => prev + indexToShow.MOBILE_INDEX);
-        } else if (windowWidth <= windowSize.TABLE_WIDTH) {
-            setMoviesCount(prev => prev + indexToShow.TABLET_INDEX);
-        } else if (windowWidth <= windowSize.DESKTOP_WIDTH) {
-            setMoviesCount(prev => prev + indexToShow.DESKTOP_INDEX);
+        if (windowWidth <= WINDOW_SIZE.MOBILE) {
+            setMoviesCount(prev => prev + INDEX_TO_SHOW.MOBILE);
+        } else if (windowWidth <= WINDOW_SIZE.TABLE) {
+            setMoviesCount(prev => prev + INDEX_TO_SHOW.TABLET);
+        } else if (windowWidth <= WINDOW_SIZE.DESKTOP) {
+            setMoviesCount(prev => prev + INDEX_TO_SHOW.DESKTOP);
         } else {
-            setMoviesCount(prev => prev + indexToShow.WIDEDESK_INDEX);
+            setMoviesCount(prev => prev + INDEX_TO_SHOW.WIDEDESK);
         }
     }, []);
 

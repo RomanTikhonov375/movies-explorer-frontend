@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import AuthForm from '../AuthForm/AuthForm';
 import AuthInput from '../AuthInput/AuthInput';
 import Logo from '../Logo/Logo';
-import { serverErrorMessages } from '../../constans/constans'
+import { SERVER_ERROR_MESSAGE } from '../../constans/constans'
 
 /**
  * Component for user login
@@ -59,12 +59,12 @@ function Login({ onLogin, apiError, setApiError, isLoading, setIsLoading, isLogg
             // Process error code and set error message
             const err = parseInt(error.replace(/[^\d]/g, ''))
             if (err === 400) {
-                setApiErrorMessage(serverErrorMessages.AUTH_TOKEN_ERROR)
+                setApiErrorMessage(SERVER_ERROR_MESSAGE.AUTH_TOKEN_ERROR)
             } else if (err === 401) {
-                setApiErrorMessage(serverErrorMessages.AUTH_ERROR)
+                setApiErrorMessage(SERVER_ERROR_MESSAGE.AUTH_ERROR)
             } else if (err === 403) {
-                setApiErrorMessage(serverErrorMessages.AUTH_TOKEN_FORMAT_ERROR)
-            } else setApiErrorMessage(serverErrorMessages.SERVER_ERROR)
+                setApiErrorMessage(SERVER_ERROR_MESSAGE.AUTH_TOKEN_FORMAT_ERROR)
+            } else setApiErrorMessage(SERVER_ERROR_MESSAGE.SERVER_ERROR)
         }).finally(() => {
             setIsLoading(false);
         });

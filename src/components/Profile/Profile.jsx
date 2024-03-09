@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import ButtonUserSubmit from '../ButtonUserSubmit/ButtonUserSubmit';
-import { serverErrorMessages } from './../../constans/constans.js';
+import { SERVER_ERROR_MESSAGE } from './../../constans/constans.js';
 import Header from '../Header/Header';
 
 
@@ -95,11 +95,11 @@ function Profile({ onUpdate, onLogout, apiError, setApiError, isLoading, setIsLo
                 setApiError(true);
                 const err = parseInt(error.replace(/[^\d]/g, ''))
                 if (err === 409) {
-                    setApiErrorMessage(serverErrorMessages.EMAIL_ALREADY_EXISTS_ERROR)
+                    setApiErrorMessage(SERVER_ERROR_MESSAGE.EMAIL_ALREADY_EXISTS_ERROR)
                 }
                 else if (err === 400) {
-                    setApiErrorMessage(serverErrorMessages.USER_EDIT_ERROR)
-                } else setApiErrorMessage(serverErrorMessages.DEFAULT_ERROR)
+                    setApiErrorMessage(SERVER_ERROR_MESSAGE.USER_EDIT_ERROR)
+                } else setApiErrorMessage(SERVER_ERROR_MESSAGE.DEFAULT_ERROR)
             }
             );
     }

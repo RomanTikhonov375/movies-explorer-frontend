@@ -1,4 +1,4 @@
-const serverErrorMessages = {
+const SERVER_ERROR_MESSAGE = {
     USER_REGISTER_ERROR: 'При регистрации пользователя произошла ошибка.',
     USER_EDIT_ERROR: 'При обновлении профиля произошла ошибка.',
     SERVER_ERROR: '500 На сервере произошла ошибка.',
@@ -12,25 +12,25 @@ const serverErrorMessages = {
 
   };
 
-  const windowSize = {
-    DESKTOP_WIDTH: 1649,
-    TABLE_WIDTH: 1276,
-    MOBILE_WIDTH: 766
+  const WINDOW_SIZE = {
+    DESKTOP: 1649,
+    TABLE: 1276,
+    MOBILE: 766
 
   }
 
-  const countMoviesToShow = {
-    WIDEDESK_COUNT: 16,
-    DESKTOP_COUNT: 12,
-    TABLE_COUNT: 8,
-    MOBILE_COUNT: 5
+  const COUNT_MOVIES_TO_SHOW = {
+    WIDEDESK: 16,
+    DESKTOP: 12,
+    TABLE: 8,
+    MOBILE: 5
   }
 
-  const indexToShow = {
-    WIDEDESK_INDEX: 4,
-    DESKTOP_INDEX: 3,
-    TABLET_INDEX: 2,
-    MOBILE_INDEX: 2,
+  const INDEX_TO_SHOW = {
+    WIDEDESK: 4,
+    DESKTOP: 3,
+    TABLET: 2,
+    MOBILE: 2,
   }
 
   const BASE_URL = 'https://api.nomoreparties.co';
@@ -38,10 +38,10 @@ const serverErrorMessages = {
   const SHORT_FILM_DURATION = 40
 
   export {
-    serverErrorMessages,
-    windowSize,
-    countMoviesToShow,
-    indexToShow,
+    SERVER_ERROR_MESSAGE,
+    WINDOW_SIZE,
+    COUNT_MOVIES_TO_SHOW,
+    INDEX_TO_SHOW,
     BASE_URL,
     SHORT_FILM_DURATION
   }
