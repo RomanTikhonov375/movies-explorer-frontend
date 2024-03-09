@@ -1,0 +1,10 @@
+.profile__input-error {
+    position: absolute;
+    right: 0;
+    bottom: 110%;
+    color:#FF004C;
+    font-size: 10px;
+    line-height: normal;
+    text-align: right;
+    width: 300px;
+}

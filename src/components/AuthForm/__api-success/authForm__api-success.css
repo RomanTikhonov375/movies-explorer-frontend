@@ -1,6 +1,6 @@
-.profile__error-text {
+.authForm__api-success {
     visibility: hidden;
-    color: #FF004C;
+    color: green;
     text-align: center;
     font-family: 'Inter','Arial', 'Helvetica', sans-serif;
     font-size: 11px;

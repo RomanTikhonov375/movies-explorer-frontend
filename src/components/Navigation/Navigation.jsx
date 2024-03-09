@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation, NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
-function Navigation({ isLoggedIn }) {
+function Navigation() {
+    const {isLoggedIn : LoggedIn} = useContext(CurrentUserContext);
     const location = useLocation();
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     useEffect(() => { setIsOpenMenu(false) }, [location.pathname])
     return (
         <>
             {
-                isLoggedIn ? (<nav className="navigation__btn-wrapper" >
+                !LoggedIn ? (<nav className="navigation__btn-wrapper" >
                     <Link to='/signup' className="navigation__signup-button">Регистрация</Link>
                     <Link to='/signin' className="navigation__signin-button">Войти</Link>
                 </nav>) : (<>
